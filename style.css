@@ -423,7 +423,10 @@ body {
 
 .scroller__inner {
   padding-block: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -433,8 +436,12 @@ body {
 }
 
 .scroller[data-animated="true"] .scroller__inner {
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
+  -webkit-animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
   animation: scroll var(--_animation-duration, 40s) var(--_animation-direction, forwards) linear infinite;
 }
 
@@ -458,8 +465,16 @@ body {
   --_animation-duration: 50s;
 }
 
+@-webkit-keyframes scroll {
+  to {
+    -webkit-transform: translate(calc(-50% - 0.5rem));
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
 @keyframes scroll {
   to {
+    -webkit-transform: translate(calc(-50% - 0.5rem));
     transform: translate(calc(-50% - 0.5rem));
   }
 }
